@@ -12,7 +12,7 @@ body {
     display: grid;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-    gap: 5px;
+    gap: 8px;
 }
 
 .grid-square {
@@ -27,11 +27,20 @@ body {
 
 #reset-button {
     background-color: white;
-    padding: 8px 25px;
+    padding: 8px 20px;
     margin-bottom: 30px;
     border: none;
     font-size: 18px;
     font-weight: 700;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+#reset-button:hover {
+    transform: scale(1.05);
     cursor: pointer;
+}
+
+#reset-button:active {
+    transform: scale(0.95);
 }
