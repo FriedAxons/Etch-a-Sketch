@@ -1,0 +1,22 @@
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, lightgray, turquoise);
+    min-height: 100vh;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    gap: 5px;
+}
+
+.grid-square {
+    background-color: black;
+    height: 30px;
+    width: 30px;
+}
