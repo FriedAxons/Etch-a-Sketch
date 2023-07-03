@@ -10,9 +10,14 @@ body {
 
 #container {
     display: grid;
-    grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr);
+    place-items: center;
+    /* grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr); 
+    
+    We refactored the JS code to do this dynamically */
+
     gap: 8px;
+    max-width: 960px;
 }
 
 .grid-square {
