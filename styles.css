@@ -27,9 +27,9 @@ body {
     width: 30px;
 }
 
-.grid-square.hovered {
+/* .grid-square.hovered {
     background-color: white;
-}
+} */
 
 #reset-button {
     background-color: white;

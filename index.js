@@ -19,10 +19,24 @@ function generateGrid(numSquares) {
     }
 }
 
+// Function to generate a random RGB color
+function generateRandomColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 // Add hover effect to the grid squares
 container.addEventListener("mouseover", (event) => {
     if (event.target.classList.contains("grid-square")) {
-        event.target.classList.add("hovered");
+        const currentColor = window.getComputedStyle(
+            event.target
+        ).backgroundColor;
+        const randomColor = generateRandomColor();
+        // This is not needed anymore as well as the CSS since the color is generated now in this file.
+        // event.target.classList.add("hovered");
+        event.target.style.backgroundColor = randomColor;
     }
 });
 
