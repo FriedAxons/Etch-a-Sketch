@@ -7,6 +7,9 @@ const resetButton = document.getElementById("reset-button");
 
 // Function to generate the grid
 function generateGrid(numSquares) {
+    // Clear the existing grid
+    container.innerHTML = "";
+
     // Set the grid template columns and rows based on the number of squares
     container.style.gridTemplateColumns = `repeat(${numSquares}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${numSquares}, 1fr)`;
@@ -27,16 +30,29 @@ function generateRandomColor() {
     return `rgb(${r}, ${g}, ${b})`;
 }
 
+// Function to darken the color by a given percentage
+function darkenColor(color, percentage) {
+    const factor = 1 - (percentage / 100) * 0.1; // Adjusting the factor
+    const [r, g, b] = color
+        .substring(color.indexOf("(") + 1, color.lastIndexOf(")"))
+        .split(",")
+        .map((value) => {
+            const channelValue = parseInt(value.trim());
+            return Math.max(0, Math.round(channelValue * factor)); // Ensuring value doesn't go below 0
+        });
+    return `rgb(${r}, ${g}, ${b})`;
+}
+
 // Add hover effect to the grid squares
 container.addEventListener("mouseover", (event) => {
     if (event.target.classList.contains("grid-square")) {
-        const currentColor = window.getComputedStyle(
-            event.target
-        ).backgroundColor;
+        const currentColor = event.target.style.backgroundColor;
         const randomColor = generateRandomColor();
-        // This is not needed anymore as well as the CSS since the color is generated now in this file.
-        // event.target.classList.add("hovered");
+        const darkenedColor = darkenColor(currentColor, 10);
         event.target.style.backgroundColor = randomColor;
+        setTimeout(() => {
+            event.target.style.backgroundColor = darkenedColor;
+        }, 200);
     }
 });
 
@@ -48,11 +64,8 @@ resetButton.addEventListener("click", () => {
 
     // Check if the input is within the valid range
     if (numSquares >= 1 && numSquares <= 100) {
-        // Clear the existing grid
-        container.innerHTML = "";
-
-        // Generate a new grid with the specified number of squares
-        generateGrid(numSquares);
+        gridSize = numSquares;
+        generateGrid(gridSize);
     }
 });
 
