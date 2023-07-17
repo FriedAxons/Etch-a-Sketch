@@ -32,13 +32,14 @@ function generateRandomColor() {
 
 // Function to darken the color by a given percentage
 function darkenColor(color, percentage) {
-    const factor = 1 - (percentage / 100) * 0.1; // Adjusting the factor
+    const factor = percentage / 100;
     const [r, g, b] = color
         .substring(color.indexOf("(") + 1, color.lastIndexOf(")"))
         .split(",")
         .map((value) => {
             const channelValue = parseInt(value.trim());
-            return Math.max(0, Math.round(channelValue * factor)); // Ensuring value doesn't go below 0
+            const newValue = Math.round(channelValue * (1 - factor));
+            return Math.max(0, newValue);
         });
     return `rgb(${r}, ${g}, ${b})`;
 }

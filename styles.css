@@ -12,11 +12,6 @@ body {
     display: grid;
     justify-content: center;
     align-items: center;
-    /* grid-template-columns: repeat(16, 1fr);
-    grid-template-rows: repeat(16, 1fr); 
-    
-    We refactored the JS code to do this dynamically */
-
     gap: 8px;
     max-width: 960px;
 }
@@ -26,10 +21,6 @@ body {
     height: 30px;
     width: 30px;
 }
-
-/* .grid-square.hovered {
-    background-color: white;
-} */
 
 #reset-button {
     background-color: white;
